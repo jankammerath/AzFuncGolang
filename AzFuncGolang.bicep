@@ -34,6 +34,10 @@ resource functionApp 'Microsoft.Web/sites@2020-06-01' = {
           value: 'custom'
         }
         {
+          name: 'FUNCTIONS_EXTENSION_VERSION'
+          value: '~3'
+        }
+        {
           name: 'AzureWebJobsStorage'
             value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccount.name};AccountKey=${listKeys(storageAccount.id, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
         }
