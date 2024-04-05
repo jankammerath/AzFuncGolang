@@ -19,12 +19,16 @@ resource functionAppPlan 'Microsoft.Web/serverfarms@2020-06-01' = {
     name: 'Y1'
     tier: 'PremiumV2'
   }
+  kind: 'linux'       // required for using linux
+  properties: {
+    reserved: true     // required for using linux
+  }
 }
 
 resource functionApp 'Microsoft.Web/sites@2020-06-01' = {
   name: functionAppName
   location: location
-  kind: 'functionapp'
+  kind: 'functionapp,linux'
   properties: {
     serverFarmId: functionAppPlan.id
     siteConfig: {
