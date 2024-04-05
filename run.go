@@ -1,11 +1,13 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/shirou/gopsutil/cpu"
+	"github.com/shirou/gopsutil/mem"
 )
 
 func get_port() string {
@@ -27,6 +29,15 @@ func getCPUName() string {
 	return ""
 }
 
+func getSystemRAM() float64 {
+	v, err := mem.VirtualMemory()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Total RAM in GB
+	return float64(v.Total) / 1024 / 1024 / 1024
+}
+
 func main() {
 	router := gin.Default()
 
@@ -40,6 +51,7 @@ func main() {
 		cpuName := getCPUName()
 		c.JSON(http.StatusOK, gin.H{
 			"cpu": cpuName,
+			"ram": getSystemRAM(),
 		})
 	})
 
