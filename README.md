@@ -8,3 +8,7 @@ While AWS allows deploying Lambda functions compiled for `arm64` which will use 
 
 1. `invoke.sh` will compile the binary for an Apple Silicon (`arm64` for `darwin`) and use the function tools to invoke it
 2. `deploy.sh` will compile for `amd64` (or `x86_64`) on `linux` to deploy it to Azure
+
+## Adapter not required
+
+There's no adapter needed to run `go-gin` on Azure Functions. 
