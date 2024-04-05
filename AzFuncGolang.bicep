@@ -31,7 +31,7 @@ resource functionApp 'Microsoft.Web/sites@2020-06-01' = {
       appSettings: [
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
-          value: 'go'
+          value: 'custom'
         }
         {
           name: 'AzureWebJobsStorage'
