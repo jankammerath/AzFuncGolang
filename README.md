@@ -12,8 +12,24 @@ The `invoke.sh` script will compile the binary for an Apple Silicon (`arm64` for
 
 ## Deployment to Azure
 
-The script `deploy.sh` will compile for `amd64` (or `x86_64`) on `linux` to deploy it to Azure. 
+There's an initial deployment with which the bicep file is deployed. Afterwards the app itself can be deployed to Azure. Whenever bicep file changes, the initial deployment needs to be re-run.
+
+### Initial deployment
+
+The initial deployment with `az-deploy.sh` will create the resource group in the specified location *(within the script)*, then deploy the resources within that group, run the golang compiler, wait 10 seconds for Azure to set up the resources and finally publish the app itself.
+
+### Recurring deployments
+
+The script `deploy.sh` will compile for `amd64` (or `x86_64`) on `linux` to deploy it to Azure. It will not touch any of the resources created on Azure.
+
+### Deletion of the app
+
+Deletion of the app is simply done by deleting the created resource group.
+
+```
+az group delete --name AzFuncGolang_RG --yes
+```
 
 ## Adapter not required
 
-There's no adapter needed to run `go-gin` on Azure Functions. 
+There's no adapter needed to run `go-gin` on Azure Functions. Azure Functions will simply invoke the webserver that Gin provides and redirect any requests to it.
