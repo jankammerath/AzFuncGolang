@@ -15,7 +15,7 @@ az deployment group create --resource-group $resourceGroupName --template-file A
 echo "Building the Go function..."
 GOOS=linux GOARCH=amd64 go build -o ./hellofunc .
 
-echo "Waiting for 10 seconds for Azure to refresh..."
+echo "Waiting 10 seconds for Azure to refresh..."
 sleep 10
 
 echo "Publishing the function..."
