@@ -1,4 +1,4 @@
-param location string = resourceGroup().location
+param location string = 'qatarcentral'
 param storageAccountName string
 param functionAppName string
 param functionAppPlanName string
@@ -41,3 +41,4 @@ resource functionApp 'Microsoft.Web/sites@2020-06-01' = {
     }
   }
 }
+
