@@ -4,7 +4,7 @@ This boilerplate code is for running an Azure Function in Golang locally on the 
 
 ## No arm64 support
 
-While AWS allows deploying Lambda functions compiled for `arm64` which will use Amazon's Graviton2 cpus, Azure does not support `arm64`. All Azure functions need to be compiled for `x86_64` or `amd64` as it is defined the GOARCH. Hence, this boilerplate has two different scripts. The **Azure Function Tools** do not use containers and hence require the binary to be compiled for Apple Silicon to run locally on Mac.
+While AWS allows deploying Lambda functions compiled for `arm64` which will use Amazon's Graviton2 cpus, Azure does not support `arm64`. All Azure functions need to be compiled for `x86_64`, or `amd64` as it is defined the `GOARCH` variable. Hence, this boilerplate has two different scripts. The **Azure Function Tools** do not use containers and thus also require the binary to be compiled for Apple Silicon to run locally on Mac.
 
 ## Local invokation
 
