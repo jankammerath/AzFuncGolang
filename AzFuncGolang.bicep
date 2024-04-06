@@ -1,4 +1,4 @@
-param location string = 'qatarcentral'
+param location string = 'germanywestcentral'
 param storageAccountName string
 param functionAppName string
 param functionAppPlanName string
